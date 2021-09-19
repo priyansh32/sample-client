@@ -8,13 +8,16 @@ function App() {
       scope="profile email"
       onSuccess={(googleUser) => {
         console.log(googleUser);
-        axios.post('http://localhost:8081/login', {
+        axios.post('https://cms-api-pr-31.herokuapp.com/login', {
           access_token: googleUser.accessToken,
           username: "thisusername"
         }).then((res) => {
           console.log(res.data);
         });
 
+      }}
+      onFailure={(error) => {
+        console.log(error);
       }}
     />
   );
